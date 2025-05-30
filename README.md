@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# ❄️ Ice Breaker - React Game Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 프로젝트 소개
 
-## Available Scripts
+**Ice Breaker**는 얼음을 조각해 예술작품을 완성하는 미니 게임입니다.  
+플레이어는 4가지 도구 중 하나를 선택해 얼음을 조각합니다.  
+**얼음의 HP가 1에 가까울수록 성공**, 0(또는 음수)이 되면 깨지고 **Game Over**!
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🎮 게임 컨셉
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 로그인 후 게임 화면 진입
+- 화면 중앙에 얼음 블록
+- 아래쪽에는 도구 버튼 4개
+  - 🪓 도끼: -500 HP
+  - 🔨 망치: -100 HP
+  - 🔧 끌: -20 HP
+  - 🪛 송곳: -1 HP
+- 도구를 선택하면 마우스 커서가 변하고, 얼음을 클릭하면 HP가 깎입니다
+- 얼음의 HP는 매 판마다 랜덤하게 설정됨 (1000 ~ 5000)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧑‍💻 사용 기술
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**
+- **React Router DOM** (화면 전환)
+- **useState, useEffect** (상태 관리)
+- **CSS Modules / Custom CSS** (스타일링)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📁 프로젝트 구조
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+ice-breaker/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   │   ├── LoginPage.jsx
+│   │   └── GamePage.jsx
+│   ├── App.jsx
+│   ├── index.js
+│   └── styles/
+│       └── GamePage.css
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚧 개발 진행상황
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [x] 프로젝트 초기 세팅
+- [x] 로그인 페이지 → 게임 페이지 라우팅
+- [x] 얼음 HP 상태 설정 및 랜덤 생성
+- [x] 도구 선택 및 상태 관리
+- [ ] 커서 모양 변경
+- [ ] 얼음 클릭 시 HP 깎기 구현
+- [ ] HP에 따른 승패 로직 추가
+- [ ] 스타일링 및 애니메이션 추가
+- [ ] 점수 시스템, 여러 판 구현 (선택)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📅 커밋 히스토리 기록 방식
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> 주요 기능 단위로 커밋  
+> 예)
 
-## Learn More
+- `feat: 로그인 페이지 추가`
+- `feat: iceHP 랜덤 설정 기능`
+- `fix: 도구 선택 오류 수정`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🙌 만든 사람
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 이름: 최태웅웅
+- 목표: React 공부 + 포트폴리오용 게임 제작
