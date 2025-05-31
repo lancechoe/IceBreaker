@@ -1,0 +1,61 @@
+/* GamePage.css */
+.ice-block {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  background-color: #add8e6;
+  border: 4px solid #007acc;
+  border-radius: 10px;
+  margin: 30px auto;
+  transition: border-radius 0.3s ease;
+}
+
+.ice-block.game-over {
+  background-color: transparent;
+  border: transparent;
+  position: relative;
+}
+
+.ice-block.game-over::after {
+  content: "💥";
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+}
+
+.ice-message {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.cursor-axe {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='70' height='84' viewport='0 0 100 100' style='fill:black;font-size:42px;'><text y='50%'>🪓</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+
+.cursor-hammer {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='70' height='84' viewport='0 0 100 100' style='fill:black;font-size:42px;'><text y='50%'>🔨</text></svg>")
+      16 0,
+    auto;
+}
+.cursor-chisel {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='70' height='84' viewport='0 0 100 100' style='fill:black;font-size:42px;'><text y='50%'>🔧</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+.cursor-awl {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='70' height='84' viewport='0 0 100 100' style='fill:black;font-size:42px;'><text y='50%'>🪛</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
