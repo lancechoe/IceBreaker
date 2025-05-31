@@ -25,13 +25,26 @@
   font-size: 64px;
 }
 
+.gameover-message {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-size: 21px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+  white-space: nowrap;
+}
+
 .ice-message {
   position: absolute;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: red;
-  font-size: 24px;
+  font-size: 21px;
   font-weight: bold;
   text-align: center;
   z-index: 10;
@@ -74,4 +87,51 @@
 
 .play-again-button:hover {
   background-color: #005a99;
+}
+/* 전체 화면 중앙 정렬 */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Arial", sans-serif;
+}
+
+/* HP 텍스트 */
+.status-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* 도구 버튼 묶음 */
+.tool-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+/* Submit 버튼 */
+.submit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #388e3c;
+}
+
+/* 선택한 도구 텍스트 */
+.selected-tool-text {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
 }

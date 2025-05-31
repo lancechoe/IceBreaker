@@ -78,9 +78,11 @@ function GamePage() {
   };
 
   return (
-    <div>
-      <div>Ice HP : {iceHP}</div>
+    <div className="game-container">
+      {/* 개발용 HP 표시 */}
+      {process.env.NODE_ENV === "development" && <div>Ice HP : {iceHP}</div>}
 
+      {/* 얼음 블록 */}
       <div
         className={`ice-block 
           ${selectedTool ? `cursor-${selectedTool}` : ""}
@@ -89,8 +91,9 @@ function GamePage() {
         onClick={handleIceClick}
         style={shapeStyle}
       >
+        {/* 결과 메시지 & Play Again 버튼 */}
         {isGameOver && (
-          <div className="ice-message">💀 RIP, beautiful ice.</div>
+          <div className="gameover-message">💀 RIP, beautiful ice.</div>
         )}
         {(isGameOver || submitted) && (
           <div className="ice-message">
@@ -102,18 +105,26 @@ function GamePage() {
           </div>
         )}
       </div>
-      <button onClick={handleSubmit} disabled={submitted || isGameOver}>
+
+      {/* 제출 버튼 */}
+      <button
+        onClick={handleSubmit}
+        disabled={submitted || isGameOver}
+        className="submit-button"
+      >
         Submit Ice
       </button>
 
       {/* 도구 버튼들 */}
-      <div>
+      <div className="tool-buttons">
         <button onClick={() => handleToolSelect("axe")}>🪓 (-500)</button>
         <button onClick={() => handleToolSelect("hammer")}>🔨 (-100)</button>
         <button onClick={() => handleToolSelect("chisel")}>🔧 (-20)</button>
         <button onClick={() => handleToolSelect("awl")}>🪛 (-1)</button>
-        <p>Selected Tool : {selectedTool}</p>
       </div>
+
+      {/* 도구 선택 상태 표시 */}
+      <div className="selected-tool-text">Selected Tool : {selectedTool}</div>
     </div>
   );
 }
