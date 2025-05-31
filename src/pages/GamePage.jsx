@@ -92,12 +92,11 @@ function GamePage() {
         style={shapeStyle}
       >
         {/* 결과 메시지 & Play Again 버튼 */}
-        {isGameOver && (
-          <div className="gameover-message">💀 RIP, beautiful ice.</div>
-        )}
         {(isGameOver || submitted) && (
           <div className="ice-message">
             {resultMessage}
+            <br />
+            ❄️ HP: {Math.max(iceHP, 0)} / {initialHP}
             <br />
             <button onClick={handleReset} className="play-again-button">
               🔁 Play Again
