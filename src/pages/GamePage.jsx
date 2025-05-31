@@ -80,26 +80,42 @@ function GamePage() {
   return (
     <div className="game-container">
       {/* 개발용 HP 표시 */}
-      {process.env.NODE_ENV === "development" && <div>Ice HP : {iceHP}</div>}
+      {process.env.NODE_ENV === "development" && <div> HP : {iceHP}</div>}
 
       {/* 얼음 블록 */}
       <div
         className={`ice-block 
-          ${selectedTool ? `cursor-${selectedTool}` : ""}
-          ${isGameOver ? "game-over" : ""}
-        `}
+    ${selectedTool ? `cursor-${selectedTool}` : ""}
+    ${isGameOver ? "game-over" : ""}`}
         onClick={handleIceClick}
         style={shapeStyle}
       >
+        {/* 둥근 모양 안에 색 칠하기 (Submit했을 때) */}
+        {submitted && !isGameOver && (
+          <div className="color-grid-inside" style={shapeStyle}>
+            {Array.from({ length: 10000 }).map((_, i) => {
+              const r = Math.floor(Math.random() * 255);
+              const g = Math.floor(Math.random() * 255);
+              const b = Math.floor(Math.random() * 255);
+              return (
+                <div
+                  key={i}
+                  className="grid-cell-inside"
+                  style={{ backgroundColor: `rgb(${r}, ${g}, ${b})` }}
+                />
+              );
+            })}
+          </div>
+        )}
+
         {/* 결과 메시지 & Play Again 버튼 */}
         {(isGameOver || submitted) && (
           <div className="ice-message">
             {resultMessage}
-            <br />
-            ❄️ HP: {Math.max(iceHP, 0)} / {initialHP}
+            <br /> HP: {Math.max(iceHP, 0)} / {initialHP}
             <br />
             <button onClick={handleReset} className="play-again-button">
-              🔁 Play Again
+              Play Again
             </button>
           </div>
         )}
@@ -111,15 +127,29 @@ function GamePage() {
         disabled={submitted || isGameOver}
         className="submit-button"
       >
-        Submit Ice
+        Submit
       </button>
 
       {/* 도구 버튼들 */}
       <div className="tool-buttons">
-        <button onClick={() => handleToolSelect("axe")}>🪓 (-500)</button>
-        <button onClick={() => handleToolSelect("hammer")}>🔨 (-100)</button>
-        <button onClick={() => handleToolSelect("chisel")}>🔧 (-20)</button>
-        <button onClick={() => handleToolSelect("awl")}>🪛 (-1)</button>
+        <button className="tool-button" onClick={() => handleToolSelect("axe")}>
+          🪓 (-500)
+        </button>
+        <button
+          className="tool-button"
+          onClick={() => handleToolSelect("hammer")}
+        >
+          🔨 (-100)
+        </button>
+        <button
+          className="tool-button"
+          onClick={() => handleToolSelect("chisel")}
+        >
+          🔧 (-20)
+        </button>
+        <button className="tool-button" onClick={() => handleToolSelect("awl")}>
+          🪛 (-1)
+        </button>
       </div>
 
       {/* 도구 선택 상태 표시 */}
