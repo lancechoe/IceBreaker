@@ -3,7 +3,7 @@ import "../styles/GamePage.css";
 
 function GamePage() {
   /* 얼음 HP 설정 (1000과 5000사이 랜덤) 변수*/
-  const [initialHP] = useState(
+  const [initialHP, setInitialHP] = useState(
     Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000
   );
   const [iceHP, setIceHP] = useState(initialHP);
@@ -16,6 +16,7 @@ function GamePage() {
   const [selectedTool, setSelectedTool] = useState(null);
   /* 제출 변수 */
   const [submitted, setSubmitted] = useState(false);
+  /* 결과 메시지 변수 */
   const [resultMessage, setResultMessage] = useState("");
   /* 게임 오버 변수 */
   const [isGameOver, setIsGameOver] = useState(false);
@@ -65,6 +66,17 @@ function GamePage() {
     setSubmitted(true);
   };
 
+  /* 재시작 함수 */
+  const handleReset = () => {
+    const newInitialHP = Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000;
+    setInitialHP(newInitialHP);
+    setIceHP(newInitialHP);
+    setSelectedTool(null);
+    setIsGameOver(false);
+    setSubmitted(false);
+    setResultMessage("");
+  };
+
   return (
     <div>
       <div>Ice HP : {iceHP}</div>
@@ -81,7 +93,13 @@ function GamePage() {
           <div className="ice-message">💀 RIP, beautiful ice.</div>
         )}
         {(isGameOver || submitted) && (
-          <div className="ice-message">{resultMessage}</div>
+          <div className="ice-message">
+            {resultMessage}
+            <br />
+            <button onClick={handleReset} className="play-again-button">
+              🔁 Play Again
+            </button>
+          </div>
         )}
       </div>
       <button onClick={handleSubmit} disabled={submitted || isGameOver}>

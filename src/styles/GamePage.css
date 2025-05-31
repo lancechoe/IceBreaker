@@ -27,7 +27,7 @@
 
 .ice-message {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: red;
@@ -58,4 +58,20 @@
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='70' height='84' viewport='0 0 100 100' style='fill:black;font-size:42px;'><text y='50%'>🪛</text></svg>")
       16 0,
     auto; /*!emojicursor.app*/
+}
+
+.play-again-button {
+  margin-top: 20px;
+  padding: 7px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: #007acc;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.play-again-button:hover {
+  background-color: #005a99;
 }
