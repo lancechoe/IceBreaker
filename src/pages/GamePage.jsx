@@ -19,8 +19,15 @@ function GamePage() {
   const [resultMessage, setResultMessage] = useState("");
   /* 게임 오버 변수 */
   const [isGameOver, setIsGameOver] = useState(false);
-
+  /*파편 변수 */
   const [flakes, setFlakes] = useState([]);
+
+  /* 사운드 */
+  const playHitSound = () => {
+    const audio = new Audio(process.env.PUBLIC_URL + "/sounds/ice-hit.mp3");
+    audio.volume = 0.5; // (0.0 ~ 1.0) → 필요하면 조절 가능
+    audio.play();
+  };
 
   /* 도구 종류 */
   const tools = {
@@ -38,6 +45,7 @@ function GamePage() {
   /* 얼음 클릭 함수 */
   const handleIceClick = (e) => {
     if (isGameOver || submitted || !selectedTool) return;
+    playHitSound();
 
     // 데미지 처리
     const damage = tools[selectedTool].damage;
@@ -123,6 +131,7 @@ function GamePage() {
         onClick={handleIceClick}
         style={shapeStyle}
       >
+        {/*파편 렌더링 */}
         {flakes.map((flake) => (
           <div
             key={flake.id}
