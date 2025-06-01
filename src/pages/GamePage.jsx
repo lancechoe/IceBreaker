@@ -7,8 +7,7 @@ function GamePage() {
     Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000
   );
   const [iceHP, setIceHP] = useState(initialHP);
-  /* 얼음 HP 비율 변수 */
-  const hpRatio = Math.max(iceHP / initialHP, 0); // 1.0 ~ 0.0 사이
+  const hpRatio = Math.max(iceHP / initialHP, 0);
   const shapeStyle = {
     borderRadius: `${(1 - hpRatio) * 50}%`,
   };
@@ -20,6 +19,8 @@ function GamePage() {
   const [resultMessage, setResultMessage] = useState("");
   /* 게임 오버 변수 */
   const [isGameOver, setIsGameOver] = useState(false);
+
+  const [flakes, setFlakes] = useState([]);
 
   /* 도구 종류 */
   const tools = {
@@ -35,18 +36,50 @@ function GamePage() {
   };
 
   /* 얼음 클릭 함수 */
-  const handleIceClick = () => {
-    if (isGameOver || submitted) return;
-    if (selectedTool) {
-      const damage = tools[selectedTool].damage;
-      setIceHP((prevHP) => {
-        const newHP = prevHP - damage;
-        if (newHP <= 0) {
-          setIsGameOver(true);
-        }
-        return newHP;
-      });
-    }
+  const handleIceClick = (e) => {
+    if (isGameOver || submitted || !selectedTool) return;
+
+    // 데미지 처리
+    const damage = tools[selectedTool].damage;
+    setIceHP((prevHP) => {
+      const newHP = prevHP - damage;
+      if (newHP <= 0) setIsGameOver(true);
+      return newHP;
+    });
+
+    // 흔들림 클래스 추가
+    const ice = e.currentTarget;
+    ice.classList.add("shake");
+    setTimeout(() => {
+      ice.classList.remove("shake");
+    }, 200);
+
+    // 떨어지는 조각 생성 (5~10개)
+    const rect = ice.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const offsetY = e.clientY - rect.top;
+
+    const newFlakes = Array.from({
+      length: Math.floor(Math.random() * 6) + 5,
+    }).map((_, i) => ({
+      id: Date.now() + i,
+      left: offsetX + Math.random() * 30 - 15,
+      top: offsetY + Math.random() * 10 - 10, // Y도 조금 랜덤하게
+      delay: Math.random() * 0.3,
+      color: `rgb(${Math.floor(Math.random() * 256)}, 
+               ${Math.floor(Math.random() * 256)}, 
+               ${Math.floor(Math.random() * 256)})`,
+      size: Math.random() * 4 + 4, // 4 ~ 8px 사이 랜덤
+    }));
+
+    setFlakes((prev) => [...prev, ...newFlakes]);
+
+    // 1초 후 제거
+    setTimeout(() => {
+      setFlakes((prev) =>
+        prev.filter((flake) => !newFlakes.some((nf) => nf.id === flake.id))
+      );
+    }, 1000);
   };
 
   /* 제출 클릭 함수 */
@@ -85,11 +118,26 @@ function GamePage() {
       {/* 얼음 블록 */}
       <div
         className={`ice-block 
-    ${selectedTool ? `cursor-${selectedTool}` : ""}
-    ${isGameOver ? "game-over" : ""}`}
+          ${selectedTool ? `cursor-${selectedTool}` : ""}
+          ${isGameOver ? "game-over" : ""}`}
         onClick={handleIceClick}
         style={shapeStyle}
       >
+        {flakes.map((flake) => (
+          <div
+            key={flake.id}
+            className="ice-flake"
+            style={{
+              left: `${flake.left}px`,
+              top: `${flake.top}px`,
+              width: `${flake.size}px`,
+              height: `${flake.size}px`,
+              animationDelay: `${flake.delay}s`,
+              backgroundColor: flake.color,
+            }}
+          />
+        ))}
+
         {/* 둥근 모양 안에 색 칠하기 (Submit했을 때) */}
         {submitted && !isGameOver && (
           <div className="color-grid-inside" style={shapeStyle}>
