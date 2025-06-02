@@ -36,6 +36,19 @@ function LoginPage() {
       <button onClick={handleLogin} className="login-button" disabled={!name}>
         Login
       </button>
+
+      <p className="login-reward-text">
+        정사각형 얼음을 조각해 완벽한 원(Circle)을 만들어보세요
+      </p>
+      <p className="login-reward-text">
+        다양한 도구를 사용해 정사각형형의 HP를 줄이고,
+      </p>
+      <p className="login-reward-text">
+        딱 1 HP가 남도록 조각하면 최고 점수를 받을 수 있어요 제한 시간은 60초!
+      </p>
+      <p className="login-reward-text">
+        100점을 달성하면 배달의민족 1만원 교환권을 드려요 🎁
+      </p>
     </div>
   );
 }

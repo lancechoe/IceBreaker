@@ -24,7 +24,7 @@ function GamePage() {
   /* 파편 변수 */
   const [flakes, setFlakes] = useState([]);
   /* 타이머 변수 */
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(60);
   /* 스코어 변수 */
   const [score, setScore] = useState(null);
   const [bestScore, setBestScore] = useState(() => {
@@ -193,7 +193,7 @@ function GamePage() {
     setIsGameOver(false);
     setSubmitted(false);
     setResultMessage("");
-    setTimer(30);
+    setTimer(60);
     setScore(null);
   };
 

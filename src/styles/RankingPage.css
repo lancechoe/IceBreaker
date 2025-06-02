@@ -5,7 +5,7 @@
   justify-content: center;
   height: 100vh;
   color: white;
-  font-family: "Press Start 2P", cursive;
+  font-family: "GmarketSans", "Press Start 2P", sans-serif;
 }
 
 .ranking-title {
@@ -50,9 +50,26 @@
 .my-rank-text {
   margin-top: 40px;
   font-size: 14px;
-  font-family: "Press Start 2P", cursive;
+  font-family: "GmarketSans", "Press Start 2P", sans-serif;
   color: white;
   text-align: center;
+}
+
+.back-button {
+  margin-top: 40px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: "GmarketSans", "Press Start 2P", sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 480px) {

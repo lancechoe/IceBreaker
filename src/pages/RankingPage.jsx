@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 import "../styles/RankingPage.css";
+import { useNavigate } from "react-router-dom";
 
 function RankingPage() {
   const [rankings, setRankings] = useState([]);
   const [myRank, setMyRank] = useState(null);
   const username = localStorage.getItem("username");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRankings = async () => {
@@ -65,6 +67,9 @@ function RankingPage() {
           You are ranked <strong>#{myRank}</strong> — keep carving! 💪
         </div>
       )}
+      <button className="back-button" onClick={() => navigate("/game")}>
+        Back to Game
+      </button>
     </div>
   );
 }

@@ -7,7 +7,7 @@ body {
   color: #000000;
   min-height: 100dvh; /* 모바일 대응용 */
   height: 100%;
-  font-family: "Press Start 2P", cursive;
+  font-family: "GmarketSans", "Press Start 2P", sans-serif;
 }
 
 /* 게임 컨테이너 */
@@ -85,7 +85,7 @@ body {
 .tool-button,
 .submit-button,
 .play-again-button {
-  font-family: "Press Start 2P", cursive;
+  font-family: "GmarketSans", "Press Start 2P", sans-serif;
 }
 
 /* 도구 버튼 묶음 */
@@ -155,7 +155,7 @@ body {
   right: 20px;
   padding: 8px 14px;
   font-size: 14px;
-  font-family: "Press Start 2P", cursive; /* 도구 버튼이랑 통일 */
+  font-family: "GmarketSans", "Press Start 2P", sans-serif;
   background-color: #ffffff;
   color: #000000;
   border: 2px solid #000000;
@@ -182,6 +182,10 @@ body {
   z-index: 100;
 }
 
+.logout-button:hover {
+  transform: scale(1.05);
+}
+
 /* 랭킹 버튼 */
 .rank-button {
   position: absolute;
@@ -189,7 +193,7 @@ body {
   left: 20px;
   padding: 8px 14px;
   font-size: 14px;
-  font-family: "Press Start 2P", cursive; /* 도구 버튼이랑 통일 */
+  font-family: "GmarketSans", "Press Start 2P", sans-serif;
   background-color: #ffffff;
   color: #000000;
   border: 2px solid #000000;
