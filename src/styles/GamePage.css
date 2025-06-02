@@ -310,3 +310,29 @@ body {
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .tool-button,
+  .submit-button,
+  .play-again-button,
+  .logout-button,
+  .rank-button,
+  .user-info {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+
+  .result-text,
+  .hp-text,
+  .score-text {
+    font-size: 12px;
+  }
+
+  .ice-message {
+    font-size: 13px;
+  }
+
+  .status-text {
+    font-size: 14px;
+  }
+}

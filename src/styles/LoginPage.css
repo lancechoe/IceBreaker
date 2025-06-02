@@ -79,3 +79,21 @@ body {
     transform: scale(1);
   }
 }
+
+@media screen and (max-width: 480px) {
+  .login-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .login-input {
+    width: 180px;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .login-button {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}
