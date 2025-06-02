@@ -18,6 +18,7 @@ function LoginPage() {
     localStorage.setItem("username", name);
     localStorage.setItem("country", "KR"); // 기본값으로 한국 설정
     localStorage.removeItem("bestScore");
+    localStorage.setItem("bestScore", -1); // 처음은 -1로 세팅
     navigate("/game");
   };
 
