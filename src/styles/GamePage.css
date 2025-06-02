@@ -3,10 +3,10 @@
 /* 전체 배경 및 폰트 */
 body {
   margin: 0;
-  background-color: #ffffff;
+  background-color: #000000;
   color: #000000;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100dvh; /* 모바일 대응용 */
+  height: 100%;
   font-family: "Press Start 2P", cursive;
 }
 
@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center; /* 수직 중앙 추가 */
-  min-height: 100vh; /* 화면 전체 높이 사용 */
+  min-height: 100dvh;
   padding: 40px 20px;
   overflow: hidden; /* 스크롤 안 생기게 */
   padding: 0; /* 내부 여백 제거 */
@@ -33,8 +33,8 @@ body {
 /* 얼음 블록 */
 .ice-block {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: min(90vw, 500px);
+  height: min(90vw, 500px);
   background-color: #ffffff;
   border: 4px solid #000000;
   border-radius: 12px;
@@ -133,6 +133,7 @@ body {
   font-size: 18px;
   margin-bottom: 20px;
   font-weight: 600;
+  color: #ffffff;
 }
 
 /* 제출 버튼 */
@@ -140,8 +141,8 @@ body {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
   border-radius: 8px;
   cursor: pointer;
