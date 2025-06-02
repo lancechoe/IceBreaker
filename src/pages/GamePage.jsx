@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/GamePage.css";
+import { supabase } from "../supabaseClient";
 
 function GamePage() {
   /* 얼음 HP 설정 (1000과 5000사이 랜덤) 변수*/
@@ -122,7 +123,7 @@ function GamePage() {
   };
 
   /* 제출 클릭 함수 */
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (isGameOver) {
       setResultMessage("💀 RIP, beautiful ice.");
     } else if (iceHP === 1) {
@@ -142,6 +143,24 @@ function GamePage() {
     if (newScore > bestScore) {
       setBestScore(newScore);
       localStorage.setItem("bestScore", newScore);
+    }
+
+    // ✅ Supabase에 점수 저장
+    const username = localStorage.getItem("username") || "Unknown";
+    const country = localStorage.getItem("country") || "KR"; // 나중에 나라 선택 기능 추가 가능
+
+    const { error } = await supabase.from("rankings").insert([
+      {
+        name: username,
+        country: country,
+        score: newScore,
+      },
+    ]);
+
+    if (error) {
+      console.error("❌ Supabase insert error:", error);
+    } else {
+      console.log("✅ 점수 저장 성공!");
     }
 
     setSubmitted(true);
