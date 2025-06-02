@@ -160,7 +160,10 @@ function GamePage() {
       setBestScore(newScore);
       localStorage.setItem("bestScore", newScore);
 
-      // ✅ Supabase에 저장
+      // ✅ 기존 기록 삭제
+      await supabase.from("rankings").delete().eq("name", username);
+
+      // ✅ Supabase에 새 점수 저장
       const { error } = await supabase.from("rankings").insert([
         {
           name: username,
