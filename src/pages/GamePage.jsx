@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/GamePage.css";
 
 function GamePage() {
@@ -19,8 +19,10 @@ function GamePage() {
   const [resultMessage, setResultMessage] = useState("");
   /* 게임 오버 변수 */
   const [isGameOver, setIsGameOver] = useState(false);
-  /*파편 변수 */
+  /* 파편 변수 */
   const [flakes, setFlakes] = useState([]);
+  /* 타이머 변수 */
+  const [timer, setTimer] = useState(30);
 
   /* 사운드 */
   const playHitSound = () => {
@@ -36,6 +38,24 @@ function GamePage() {
     chisel: { emoji: "🔧", damage: 20 },
     awl: { emoji: "🪛", damage: 1 },
   };
+
+  /* 타이머 useEffect */
+  useEffect(() => {
+    if (submitted || isGameOver) return;
+
+    const interval = setInterval(() => {
+      setTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          handleSubmit();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [submitted, isGameOver]);
 
   /* 도구 클릭 함수 */
   const handleToolSelect = (toolName) => {
@@ -116,12 +136,14 @@ function GamePage() {
     setIsGameOver(false);
     setSubmitted(false);
     setResultMessage("");
+    setTimer(30);
   };
 
   return (
     <div className="game-container">
       {/* 개발용 HP 표시 */}
       {process.env.NODE_ENV === "development" && <div> HP : {iceHP}</div>}
+      <div className="status-text">⏱ : {timer}</div>
 
       {/* 얼음 블록 */}
       <div
@@ -208,9 +230,6 @@ function GamePage() {
           🪛 (-1)
         </button>
       </div>
-
-      {/* 도구 선택 상태 표시 */}
-      <div className="selected-tool-text">Selected Tool : {selectedTool}</div>
     </div>
   );
 }
