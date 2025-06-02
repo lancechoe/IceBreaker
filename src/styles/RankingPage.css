@@ -46,3 +46,11 @@
   font-size: 17px;
   font-weight: 600;
 }
+
+.my-rank-text {
+  margin-top: 40px;
+  font-size: 14px;
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  text-align: center;
+}

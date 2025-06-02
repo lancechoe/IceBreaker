@@ -149,10 +149,44 @@ body {
   transition: transform 0.2s ease;
 }
 
-.rank-button {
+.user-info {
   position: absolute;
   top: 20px;
   right: 20px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: "Press Start 2P", cursive; /* 도구 버튼이랑 통일 */
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 100;
+}
+
+/* 로그아웃 버튼*/
+.logout-button {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: "Press Start 2P", cursive; /* 도구 버튼이랑 통일 */
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 100;
+}
+
+/* 랭킹 버튼 */
+.rank-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
   padding: 8px 14px;
   font-size: 14px;
   font-family: "Press Start 2P", cursive; /* 도구 버튼이랑 통일 */

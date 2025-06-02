@@ -1,6 +1,6 @@
 body {
   background-color: #000000;
-  color: #ffffff;
+
   font-family: "Press Start 2P", cursive;
   margin: 0;
 }
@@ -17,10 +17,16 @@ body {
 }
 
 .login-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
+  font-size: 40px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 2px;
+
+  text-shadow: 0 0 3px #fff, 0 0 7px #fff, 0 0 10px #000, 0 0 20px #000;
+
+  animation: pulse-glow 1.2s infinite ease-in-out;
+  margin-bottom: 30px;
 }
 
 .login-input {
@@ -54,4 +60,22 @@ body {
 .login-button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.3;
+    text-shadow: 0 0 2px #888, 0 0 4px #aaa;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 3px #fff, 0 0 8px #fff, 0 0 16px #000;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 0.6;
+    text-shadow: 0 0 1px #666, 0 0 3px #999;
+    transform: scale(1);
+  }
 }

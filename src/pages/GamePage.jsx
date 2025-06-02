@@ -78,6 +78,13 @@ function GamePage() {
     return Math.max(0, 100 - diff); // 1HP가 완벽, 차이 날수록 점수 깎임
   };
 
+  /* 로그아웃 함수 */
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("country");
+    navigate("/");
+  };
+
   /* 얼음 클릭 함수 */
   const handleIceClick = (e) => {
     if (isGameOver || submitted || !selectedTool) return;
@@ -143,28 +150,32 @@ function GamePage() {
     const newScore = calculateScore(iceHP);
     setScore(newScore);
 
-    // 최고점 갱신
-    if (newScore > bestScore) {
+    const username = localStorage.getItem("username") || "Unknown";
+    const country = localStorage.getItem("country") || "KR";
+
+    // 최고점 갱신 여부 판단
+    const currentBest = Number(localStorage.getItem("bestScore")) || 0;
+
+    if (newScore > currentBest) {
       setBestScore(newScore);
       localStorage.setItem("bestScore", newScore);
-    }
 
-    // ✅ Supabase에 점수 저장
-    const username = localStorage.getItem("username") || "Unknown";
-    const country = localStorage.getItem("country") || "KR"; // 나중에 나라 선택 기능 추가 가능
+      // ✅ Supabase에 저장
+      const { error } = await supabase.from("rankings").insert([
+        {
+          name: username,
+          country: country,
+          score: newScore,
+        },
+      ]);
 
-    const { error } = await supabase.from("rankings").insert([
-      {
-        name: username,
-        country: country,
-        score: newScore,
-      },
-    ]);
-
-    if (error) {
-      console.error("❌ Supabase insert error:", error);
+      if (error) {
+        console.error("❌ Supabase insert error:", error);
+      } else {
+        console.log("✅ 점수 저장 성공!");
+      }
     } else {
-      console.log("✅ 점수 저장 성공!");
+      console.log("📌 최고점 갱신 안 됨 → 랭킹 미저장");
     }
 
     setSubmitted(true);
@@ -185,9 +196,13 @@ function GamePage() {
 
   return (
     <div className="game-container">
-      {/* 랭킹 */}
+      <div className="user-info">Hello, {localStorage.getItem("username")}</div>
 
-      <button className="rank-button" onClick={() => navigate("/ranking")}>
+      <button className="logout-button" onClick={() => handleLogout()}>
+        Logout
+      </button>
+      {/* 랭킹 */}
+      <button className="rank-button" s onClick={() => navigate("/ranking")}>
         🏆 Ranking
       </button>
 
