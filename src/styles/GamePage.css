@@ -69,13 +69,19 @@ body {
 }
 
 .result-text {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .hp-text {
   margin-bottom: 10px;
 }
 
+.score-text {
+  color: #000000;
+  text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff,
+    1px 1px 0 #ffffff;
+  margin-bottom: 10px;
+}
 .tool-button,
 .submit-button,
 .play-again-button {

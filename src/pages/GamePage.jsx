@@ -23,6 +23,11 @@ function GamePage() {
   const [flakes, setFlakes] = useState([]);
   /* 타이머 변수 */
   const [timer, setTimer] = useState(30);
+  /* 스코어 변수 */
+  const [score, setScore] = useState(null);
+  const [bestScore, setBestScore] = useState(() => {
+    return Number(localStorage.getItem("bestScore")) || 0;
+  });
 
   /* 사운드 */
   const playHitSound = () => {
@@ -60,6 +65,12 @@ function GamePage() {
   /* 도구 클릭 함수 */
   const handleToolSelect = (toolName) => {
     setSelectedTool(toolName);
+  };
+
+  /* 점수 계산 함수 */
+  const calculateScore = (hp) => {
+    const diff = Math.abs(hp - 1);
+    return Math.max(0, 100 - diff); // 1HP가 완벽, 차이 날수록 점수 깎임
   };
 
   /* 얼음 클릭 함수 */
@@ -124,6 +135,15 @@ function GamePage() {
       setResultMessage("💥 Hmm… You went a little too hard on it.");
     }
 
+    const newScore = calculateScore(iceHP);
+    setScore(newScore);
+
+    // 최고점 갱신
+    if (newScore > bestScore) {
+      setBestScore(newScore);
+      localStorage.setItem("bestScore", newScore);
+    }
+
     setSubmitted(true);
   };
 
@@ -137,6 +157,7 @@ function GamePage() {
     setSubmitted(false);
     setResultMessage("");
     setTimer(30);
+    setScore(null);
   };
 
   return (
@@ -194,6 +215,13 @@ function GamePage() {
             <div className="hp-text">
               HP: {Math.max(iceHP, 0)} / {initialHP}
             </div>
+            {score !== null && (
+              <>
+                <div className="score-text">Score: {score}</div>
+                <div className="score-text">Best Score: {bestScore}</div>
+              </>
+            )}
+
             <button onClick={handleReset} className="play-again-button">
               Play Again
             </button>
