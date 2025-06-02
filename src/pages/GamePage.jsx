@@ -190,9 +190,10 @@ function GamePage() {
         {/* 결과 메시지 & Play Again 버튼 */}
         {(isGameOver || submitted) && (
           <div className="ice-message">
-            {resultMessage}
-            <br /> HP: {Math.max(iceHP, 0)} / {initialHP}
-            <br />
+            <div className="result-text">{resultMessage}</div>
+            <div className="hp-text">
+              HP: {Math.max(iceHP, 0)} / {initialHP}
+            </div>
             <button onClick={handleReset} className="play-again-button">
               Play Again
             </button>
