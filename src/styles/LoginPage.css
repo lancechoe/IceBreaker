@@ -1,36 +1,57 @@
-/* LoginPage.css */
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Press Start 2P", cursive;
+  margin: 0;
+}
 
 .login-container {
-  height: 100vh;
-  background-color: #000000;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
 }
 
 .login-title {
-  font-size: 40px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.login-input {
+  padding: 10px;
+  font-size: 14px;
+  width: 220px;
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+  background-color: #000000;
   color: #ffffff;
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
-    2px 2px 0 #000;
-  margin-bottom: 50px;
-  text-align: center;
   font-family: "Press Start 2P", cursive;
+  text-align: center;
 }
 
 .login-button {
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: "Press Start 2P", cursive;
   background-color: #ffffff;
   color: #000000;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-family: "Press Start 2P", cursive;
   transition: transform 0.2s ease;
 }
 
-.login-button:hover {
-  transform: scale(1.1);
+.login-button:hover:enabled {
+  transform: scale(1.05);
+}
+
+.login-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

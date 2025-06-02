@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/GamePage.css";
 import { supabase } from "../supabaseClient";
+import { useNavigate } from "react-router-dom";
 
 function GamePage() {
   /* 얼음 HP 설정 (1000과 5000사이 랜덤) 변수*/
@@ -29,6 +30,9 @@ function GamePage() {
   const [bestScore, setBestScore] = useState(() => {
     return Number(localStorage.getItem("bestScore")) || 0;
   });
+
+  /* 랭킹 페이지 네비게이트 */
+  const navigate = useNavigate();
 
   /* 사운드 */
   const playHitSound = () => {
@@ -181,6 +185,12 @@ function GamePage() {
 
   return (
     <div className="game-container">
+      {/* 랭킹 */}
+
+      <button className="rank-button" onClick={() => navigate("/ranking")}>
+        🏆 Ranking
+      </button>
+
       {/* 개발용 HP 표시 */}
       {process.env.NODE_ENV === "development" && <div> HP : {iceHP}</div>}
       <div className="status-text">⏱ : {timer}</div>

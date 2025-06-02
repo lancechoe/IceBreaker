@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import GamePage from "./pages/GamePage";
+import RankingPage from "./pages/RankingPage";
 import { supabase } from "./supabaseClient"; // 경로 맞춰서 수정
 
 function App() {
