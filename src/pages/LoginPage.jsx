@@ -46,9 +46,7 @@ function LoginPage() {
       <p className="login-reward-text">
         딱 1 HP가 남도록 조각하면 최고 점수를 받을 수 있어요 제한 시간은 60초!
       </p>
-      <p className="login-reward-text">
-        100점을 달성하면 배달의민족 1만원 교환권을 드려요 🎁
-      </p>
+      <p className="login-reward-text"></p>
     </div>
   );
 }
