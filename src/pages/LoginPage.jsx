@@ -38,13 +38,13 @@ function LoginPage() {
       </button>
 
       <p className="login-reward-text">
-        정사각형 얼음을 조각해 완벽한 원(Circle)을 만들어보세요
+        Chip away the square ice to make a perfect Circle!
       </p>
       <p className="login-reward-text">
-        다양한 도구를 사용해 정사각형형의 HP를 줄이고,
+        Use a variety of tools to reduce the square’s HP.
       </p>
       <p className="login-reward-text">
-        딱 1 HP가 남도록 조각하면 최고 점수를 받을 수 있어요 제한 시간은 60초!
+        Leave exactly 1 HP to get the highest score. You have 60 seconds!
       </p>
       <p className="login-reward-text"></p>
     </div>
